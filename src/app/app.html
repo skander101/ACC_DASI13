@@ -16,9 +16,9 @@
     --hot-red: oklch(61.42% 0.238 15.34);
     --orange-red: oklch(63.32% 0.24 31.68);
 
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
-    --gray-400: oklch(70.9% 0.015 304.04);
+    --gray-900: var(--text);
+    --gray-700: var(--text-muted);
+    --gray-400: var(--text-muted);
 
     --red-to-pink-to-purple-vertical-gradient: linear-gradient(
       180deg,
@@ -44,6 +44,26 @@
     -moz-osx-font-smoothing: grayscale;
     display: block;
     height: 100dvh;
+    background: var(--background);
+    color: var(--text);
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover {
+    background: var(--background);
   }
 
   h1 {
@@ -185,6 +205,14 @@
 </style>
 
 <main class="main">
+  <button
+    class="theme-toggle"
+    type="button"
+    (click)="toggleTheme()"
+    [attr.aria-label]="theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+  >
+    {{ theme() === 'dark' ? 'Light mode' : 'Dark mode' }}
+  </button>
   <div class="content">
     <div class="left-side">
       <svg
