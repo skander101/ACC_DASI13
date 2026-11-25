@@ -8,5 +8,12 @@
     <li><a href="#">Contact</a></li>
   </ul>
 
-  <button class="navbar__cta" type="button">Se connecter</button>
+  <button
+    class="navbar__cta"
+    type="button"
+    [attr.aria-label]="theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+    (click)="toggleTheme()"
+  >
+    {{ theme() === 'dark' ? 'Light mode' : 'Dark mode' }}
+  </button>
 </nav>

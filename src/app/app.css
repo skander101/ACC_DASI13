@@ -1,8 +1,8 @@
 :host {
   display: block;
   min-height: 100dvh;
-  background: #000;
-  color: #fff;
+  background: var(--background);
+  color: var(--text);
 }
 
 .app-shell {

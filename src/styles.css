@@ -7,6 +7,15 @@
   --border: #333;
 }
 
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background: #f4f5f8;
+  --surface: #fff;
+  --text: #1b1b1f;
+  --text-muted: #5a5a66;
+  --border: #dcdce5;
+}
+
 html,
 body {
   min-height: 100%;
@@ -17,9 +26,16 @@ body {
   background: var(--background);
   color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-body,
-body * {
-  color: #fff;
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
