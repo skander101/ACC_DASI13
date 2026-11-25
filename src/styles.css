@@ -1,19 +1,10 @@
 :root {
-  color-scheme: light;
-  --background: #f4f5f8;
-  --surface: #ffffff;
-  --text: #1b1b1f;
-  --text-muted: #5a5a66;
-  --border: #dcdce5;
-}
-
-:root[data-theme='dark'] {
   color-scheme: dark;
-  --background: #101014;
-  --surface: #1c1c22;
-  --text: #f2f2f7;
-  --text-muted: #a9a9b6;
-  --border: #34343f;
+  --background: #000;
+  --surface: #000;
+  --text: #fff;
+  --text-muted: #fff;
+  --border: #333;
 }
 
 html,
@@ -26,5 +17,9 @@ body {
   background: var(--background);
   color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  transition: background 0.2s ease, color 0.2s ease;
+}
+
+body,
+body * {
+  color: #fff;
 }

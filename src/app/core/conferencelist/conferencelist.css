@@ -1,0 +1,81 @@
+.conference-list {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #fff;
+}
+
+.conference-list h1 {
+  margin: 0 0 1.5rem;
+  color: #fff;
+}
+
+.conference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.conference-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid #333;
+  border-radius: 0.75rem;
+  background: #111;
+  color: #fff;
+}
+
+.conference-card__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: #000;
+}
+
+.conference-card__badge {
+  align-self: flex-start;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #444;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.conference-card h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.125rem;
+}
+
+.conference-card__description {
+  margin: 0;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.conference-card__details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.conference-card__details div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.conference-card__details dt {
+  color: #fff;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.conference-card__details dd {
+  margin: 0;
+  color: #fff;
+}

@@ -1,0 +1,64 @@
+<section class="conference-list">
+  <h1>{{ title | uppercase }}</h1>
+
+  <label class="form-label" for="conferenceSearch">Rechercher</label>
+  <input
+    id="conferenceSearch"
+    name="searchTerm"
+    class="form-control mb-3"
+    type="search"
+    placeholder="Rechercher une conférence"
+    [(ngModel)]="searchTerm"
+  />
+
+  <div class="conference-grid">
+    @for (conf of filteredConferences; track conf.id) {
+      <article class="conference-card">
+        <img
+          class="conference-card__image"
+          [src]="conf.image"
+          [alt]="conf.titre"
+          loading="lazy"
+        />
+        <span class="conference-card__badge">{{ conf.category }}</span>
+        <h2>{{ conf.titre | uppercase }}</h2>
+        <p class="conference-card__description">{{ conf.description }}</p>
+
+        <dl class="conference-card__details">
+          <div>
+            <dt>Date</dt>
+            <dd>{{ conf.date | date: 'dd/MM/yyyy' }}</dd>
+          </div>
+          <div>
+            <dt>Lieu</dt>
+            <dd>{{ conf.lieu }}</dd>
+          </div>
+          <div>
+            <dt>Prix</dt>
+            <dd>{{ conf.prix }} DT</dd>
+          </div>
+          <div>
+            <dt>Places</dt>
+            <dd>{{ conf.nbPlaces }}</dd>
+          </div>
+          <div>
+            <dt>Likes</dt>
+            <dd>{{ conf.nbLikes }}</dd>
+          </div>
+        </dl>
+
+        <button
+          type="button"
+          class="btn btn-sm w-100 mt-auto"
+          [class.btn-light]="isFavorite(conf.id)"
+          [class.btn-outline-light]="!isFavorite(conf.id)"
+          (click)="addToFavorites(conf)"
+        >
+          {{ isFavorite(conf.id) ? 'in favs' : 'add to favs' }}
+        </button>
+      </article>
+    } @empty {
+      <p>Aucune conférence trouvée.</p>
+    }
+  </div>
+</section>

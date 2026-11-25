@@ -1,22 +1,42 @@
+import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Conferencelist } from './core/conferencelist/conferencelist';
+import { FooterComponent } from './core/footer/footer';
+import { HeaderComponent } from './core/header/header';
+import { HomeComponent } from './core/home/home';
+import { Conference } from './core/models/conference';
+import { NavbarComponent } from './core/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    Conferencelist,
+    HeaderComponent,
+    NavbarComponent,
+    HomeComponent,
+    FooterComponent,
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('Angular_Tutorial');
-  protected readonly theme = signal<'light' | 'dark'>(
-    document.documentElement.dataset['theme'] === 'dark' ? 'dark' : 'light'
-  );
+  favorites = signal<Conference[]>([]);
+  alertMessage = signal<string | null>(null);
 
-  protected toggleTheme(): void {
-    const next = this.theme() === 'dark' ? 'light' : 'dark';
-    this.theme.set(next);
-    document.documentElement.dataset['theme'] = next;
-    localStorage.setItem('theme', next);
+  addToFavorites(conf: Conference): void {
+    if (this.favorites().some(item => item.id === conf.id)) {
+      this.alertMessage.set(`"${conf.titre}" est déjà dans vos favoris.`);
+      return;
+    }
+
+    this.alertMessage.set(null);
+    this.favorites.set([...this.favorites(), conf]);
+  }
+
+  dismissAlert(): void {
+    this.alertMessage.set(null);
   }
 }
